@@ -1,0 +1,21 @@
+1、整合springboot遇到的问题
+    Failed to instantiate SLF4J LoggerFactory
+        springboot自带的logback日志工具版本太低或是mavan没有将将其导入
+    解决方法:
+        方法1:
+            <dependency>
+              <groupId>ch.qos.logback</groupId>
+              <artifactId>logback-classic</artifactId>
+              <version>1.2.3</version>
+            </dependency>
+            <dependency>
+              <groupId>ch.qos.logback</groupId>
+              <artifactId>logback-core</artifactId>
+              <version>RELEASE</version>
+            </dependency>
+        方法2:
+            <dependency>
+              <groupId>net.logstash.logback</groupId>
+              <artifactId>logstash-logback-encoder</artifactId>
+              <version>4.8</version>
+            </dependency>
