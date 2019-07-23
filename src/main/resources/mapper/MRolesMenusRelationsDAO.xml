@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunpx.mall.mapper.MRolesMenusRelationsDAO">
+  <resultMap id="BaseResultMap" type="com.sunpx.mall.model.MRolesMenusRelations">
+    <id column="m_id" jdbcType="INTEGER" property="mId" />
+    <result column="m_roles_code" jdbcType="VARCHAR" property="mRolesCode" />
+    <result column="m_menus_code" jdbcType="VARCHAR" property="mMenusCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    m_id, m_roles_code, m_menus_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from m_roles_menus_relations
+    where m_id = #{mId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from m_roles_menus_relations
+    where m_id = #{mId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sunpx.mall.model.MRolesMenusRelations">
+    insert into m_roles_menus_relations (m_id, m_roles_code, m_menus_code
+      )
+    values (#{mId,jdbcType=INTEGER}, #{mRolesCode,jdbcType=VARCHAR}, #{mMenusCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunpx.mall.model.MRolesMenusRelations">
+    insert into m_roles_menus_relations
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
+        m_id,
+      </if>
+      <if test="mRolesCode != null">
+        m_roles_code,
+      </if>
+      <if test="mMenusCode != null">
+        m_menus_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
+        #{mId,jdbcType=INTEGER},
+      </if>
+      <if test="mRolesCode != null">
+        #{mRolesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mMenusCode != null">
+        #{mMenusCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunpx.mall.model.MRolesMenusRelations">
+    update m_roles_menus_relations
+    <set>
+      <if test="mRolesCode != null">
+        m_roles_code = #{mRolesCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mMenusCode != null">
+        m_menus_code = #{mMenusCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunpx.mall.model.MRolesMenusRelations">
+    update m_roles_menus_relations
+    set m_roles_code = #{mRolesCode,jdbcType=VARCHAR},
+      m_menus_code = #{mMenusCode,jdbcType=VARCHAR}
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+</mapper>
