@@ -1,6 +1,7 @@
 package com.sunpx.mall.controller;
 
 import com.sunpx.mall.common.CommonResult;
+import com.sunpx.mall.model.MUsersModel;
 import com.sunpx.mall.services.IUserManagerServices;
 import com.sunpx.mall.vo.UsersRoleVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class UserManagerController {
     }
 
     /**
-     * 用户启用开关0:启用-1，未启用
+     * 用户启用开关0:启用-1，未启用（同逻辑删除）
      * @return
      */
     @RequestMapping(value = "/user/userSwitchStatus", method = RequestMethod.PUT)
@@ -53,4 +54,11 @@ public class UserManagerController {
         }
         return result;
     }
+
+    @RequestMapping(value = "/user/addUsers", method = RequestMethod.POST)
+    public CommonResult addUsers(@RequestParam MUsersModel usersModel){
+
+        return null;
+    }
+
 }
